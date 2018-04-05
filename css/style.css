@@ -1,34 +1,57 @@
 body{
+      
+      
       background-image: url("../pics/background.jpg");
       background-position: center center;
       background-size: cover;
       background-repeat: no-repeat;
       background-attachment: fixed;
       background-color: grey;
-      font-family: 'Roboto Condensed', sans-serif;
+      
       color: white;
+      font-family: 'Roboto Condensed', sans-serif;
     }
-	
+
 h1{
-	font-size: 85px;
+	font-size: 5em;
 }
 
 h2{
-	font-size: 40px;
+	font-size: 2.5em;
 }
 
 p{
-	font-size: 25px;
+	font-size: 1.25em;
 }
 
 a{
-	color: white;
+	color: #cccccc;
 }
 
-.spacer{
-	min-height: 80px;
+a:link a:visited{
+      color: #cccccc;
+      
 }
 
-.projectImg{
-	height: 300px;
+a:hover{
+      font-size: 105%;
+      color: #ffffff;
+      text-decoration: none;
+}
+
+img{
+      opacity: 0.9;
+}
+
+img:hover{
+      opacity: 1;
+}
+
+.jumbotron{
+      background-color: transparent;
+}
+
+.row{
+      margin: 5%;
+      text-align: center;
 }
