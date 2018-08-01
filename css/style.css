@@ -1,17 +1,3 @@
-body{
-      
-      
-      background-image: url("../pics/background.jpg");
-      background-position: center center;
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-color: grey;
-      
-      color: white;
-      font-family: 'Roboto Condensed', sans-serif;
-    }
-
 h1{
 	font-size: 5em;
 }
@@ -24,13 +10,17 @@ p{
 	font-size: 1.25em;
 }
 
+.container-fluid{
+      width: 100%;
+      padding: 0;
+}
+
 a{
 	color: #cccccc;
 }
 
 a:link a:visited{
       color: #cccccc;
-      
 }
 
 a:hover{
@@ -54,4 +44,51 @@ img:hover{
 .row{
       margin: 5%;
       text-align: center;
+}
+
+body{
+      
+      background-image: url("../pics/background.jpg");
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-color: grey;
+      
+      color: white;
+      font-family: 'Roboto Condensed', sans-serif;
+    }
+
+.title-page{
+      height: 100vh;
+      text-align: center;
+}
+
+#arrow{
+     position: absolute;
+     bottom: 10px;
+     left: 45%;
+     right: 45%;
+     
+}
+
+i.arrow{
+      display: inline-block;
+      padding: 20px;
+      border: solid #cccccc;
+      border-width: 0 5px 5px 0;
+      transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+}
+
+#arrow:hover i.arrow{
+      padding: 22px;
+      border: solid #ffffff;
+      border-width: 0 5px 5px 0;
+      cursor: pointer;
+}
+
+#projects{
+      padding: 5% 5%;
+      background-color: rgba(0,0,0,0.8);
 }
