@@ -1,12 +1,4 @@
-//var projects = document.getElementById("projects");
-//var arrow = document.getElementById("arrow");
-//
-//arrow.addEventListener("click", function(){
-//	projects.scrollIntoView({
-//		behavior: "auto"
-//	});
-//});
-
+// Smoothly scroll to projects section upon clicking on arrow
 
 $("#arrow").click(function(){
 	$("html, body").animate({
