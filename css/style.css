@@ -93,11 +93,9 @@ body{
 #arrow{
       position: absolute;
       bottom: 10px;
-      left: 45%;
-      right: 45%;
+      left: 0;
+      right: 0;
       opacity: 0;
-      transform: rotate(45deg);
-      -webkit-transform: rotate(45deg);
       animation: grow-arrow;
       animation-delay: 3s;
       animation-duration: 1s;
@@ -110,6 +108,8 @@ i.arrow{
       padding: 30px;
       border: solid #cccccc;
       border-width: 0 5px 5px 0;
+      transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
 }
 
 
@@ -133,10 +133,11 @@ i.arrow{
       100% {
             bottom: 10px;
             opacity: 1;
+            text-align: center;
             }
 }
 
-#arrow:hover i.arrow{
+.arrow:hover{
       padding: 35px;
       border: solid #ffffff;
       border-width: 0 5px 5px 0;
