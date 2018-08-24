@@ -1,0 +1,128 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+h1              { font-size: 2em; margin: .67em 0; font-weight: 400;}
+h2              { font-size: 1.5em; margin: .75em 0; font-weight: 400;}
+h3              { font-size: 1.17em; margin: .83em 0; font-weight: 400;}
+h4, p,
+blockquote, ul,
+fieldset, form,
+ol, dl, dir,
+menu            { margin: 1.12em 0 }
+h5              { font-size: .83em; margin: 1.5em 0; font-weight: 400;}
+h6              { font-size: .75em; margin: 1.67em 0; font-weight: 400;}
+
+body{
+    
+    min-height: 100vh;
+    
+    text-align: center;
+    
+    font-family: 'Space Mono', monospace;
+    background-image: linear-gradient(to bottom left, aqua, blueviolet);
+    background-repeat: no-repeat;
+    background-size: cover;   
+}
+
+#render_div{
+    margin-bottom: 60px;
+}
+
+#title{
+    margin: 0;
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 6em;
+    font-weight: 500;
+}
+
+.random_letters{
+    font-size: 2em;
+}
+
+.textbox{
+     
+    font-size: 1.5em;
+    font-family: inherit;
+}
+
+.button{
+    
+    padding: 3px 10px;
+    font-size: 1.5em;
+    color: #ccc;
+    background-color: rgba(0,0,0,0.25);
+    border: 2px solid #ccc;
+    cursor: pointer;
+}
+
+form p{
+    margin-bottom: 3px;
+}
+
+.time_div *{
+    display: inline-block;
+    font-size: 3em;
+}
+
+#word{
+    display: block;
+    margin: 0 auto 0 auto;
+}
+
+#word_desc_btn{
+    display: block;
+    padding: 7px 10px;
+    margin: 20px auto 0 auto;
+    font-size: 3em;
+    color: #ccc;
+    background-color: rgba(0,0,0,0.25);
+    border: 2px solid #ccc;
+    cursor: pointer;
+}
+
+
+#guesses p{
+    display: inline-block;
+    margin-right: 10px;
+}
+
+#wait_msg{
+    display: none;
+    animation-name: change-colors;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes change-colors{
+    0% {color: black;}
+    50%   {color: #ccc;}
+    100% {color: black;}
+}
+
+#screen_bottom{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    padding: 5px 0 5px 15px;
+    
+    text-align: left;
+    font-size: 1.5em;
+    color: #ccc;
+    
+    background-color: rgba(0, 0, 0, 0.25);
+    z-index: 5;
+}
+
+#screen_bottom *{
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+
+#render_players_div div{  
+    margin-right: 20px;
+}
