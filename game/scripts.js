@@ -365,27 +365,28 @@ const playersDiv = document.getElementById("render_players_div");
 // Tracks changes in game state and adds dynamic HTML accordingly
 firebaseObj.ref("gameState").on("value", snap => { // Game SETUP: Things are being set up by the host
 	
-	if(snap.val() === null){
-		const isFirstPlayer = true;
-	
-		if(isFirstPlayer){
-			createGame(playerID, letters);
-		}
-		
-		createPlayer(playerID)
-		.then(renderSetup(isFirstPlayer));
-		
+	if(snap.val() === null){ //Creates a game if nothing is in firebase
+		console.log(snap.val());
+
+		createGame(playerID, letters);		
 	}
 	
+	//Setting up game and players
 	else if(snap.val() === "setup"){
 		
-		createPlayer(playerID)
-		.then(renderSetup(false));
-	}
+		console.log(snap.val());
+		
+		firebaseObj.ref("players")
+		.once("value", snap => {
+			const isFirst = (snap.val() === null);
+			createPlayer(playerID)
+			.then(renderSetup(isFirst));
+	});}
 	
 	// GAME has started
 	else if(snap.val() === "active"){ // timer countdown begins
 		
+		console.log(snap.val());
 		firebaseObj.ref().once("value")
 		.then(snap => {renderGameView(snap);});
 	}
@@ -393,6 +394,7 @@ firebaseObj.ref("gameState").on("value", snap => { // Game SETUP: Things are bei
 	// GAME has finished
 	else if(snap.val() === "finished"){
 		
+		console.log(snap.val());
 		firebaseObj.ref().once("value")
 		.then(snap => {renderEnd(snap);});
 	}
@@ -400,6 +402,7 @@ firebaseObj.ref("gameState").on("value", snap => { // Game SETUP: Things are bei
 	// GAME has been reset
 	else if(snap.val() === "reset"){
 		location.reload();
+		console.log(snap.val());
 	}
 	
 });
