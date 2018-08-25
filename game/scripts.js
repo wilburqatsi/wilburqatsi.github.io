@@ -184,44 +184,27 @@ function checkTime(){
 
 
 // Creates setup screen for players
-function renderSetup(isFirstPlayer){
+function renderSetup(){
 	
-	if(isFirstPlayer){
-		renderDiv.innerHTML =
-		`<h1>
-			Enter your name:
-		</h1>
-		
-		<form onsubmit = "return false">
-			<input type="text" class="textbox" id="name_box" required>
-			<input type="submit" class="button" id="btn_submit_user" value="TRANSMIT">
-		</form>
-		
-		<p>
-			Invite some of your pals by sharing this link: ${window.location.href}
-		</p>`;
-		
-	}
 	
-	else{
-		renderDiv.innerHTML =
-		`<h1>
-			Enter your name:
-		</h1>
-		
-		<form onsubmit = "return false">
-			<input type="text" class="textbox" id="name_box" required>
-			<input type="submit" class="button" id="btn_submit_user" value="TRANSMIT">
-		</form>
-		
-		<p>
-			Invite some of your pals by sharing this link: ${window.location.href}
-		</p>
-		
-		<div id="wait_msg">
-			<h2>Waiting for host to submit secret word</h2>
-		</div>`;
-	}
+	renderDiv.innerHTML =
+	`<h1>
+		Enter your name:
+	</h1>
+	
+	<form onsubmit = "return false">
+		<input type="text" class="textbox" id="name_box" required>
+		<input type="submit" class="button" id="btn_submit_user" value="TRANSMIT">
+	</form>
+	
+	<p>
+		Invite some of your pals by sharing this link: ${window.location.href}
+	</p>
+	
+	<div id="wait_msg">
+		<h2>Waiting for host to submit secret word</h2>
+	</div>`;
+	
 }
 
 // Displays word and message input to host
@@ -377,12 +360,9 @@ firebaseObj.ref("gameState").on("value", snap => { // Game SETUP: Things are bei
 	//Setting up game and players
 	else if(snap.val() === "setup"){
 		
-		firebaseObj.ref("players")
-		.once("value", snap => {
-			const isFirst = (snap.val() === null);
-			createPlayer(playerID)
-			.then(renderSetup(isFirst));
-	});}
+		createPlayer(playerID);
+		renderSetup();
+	}
 	
 	// GAME has started
 	else if(snap.val() === "active"){ // timer countdown begins
