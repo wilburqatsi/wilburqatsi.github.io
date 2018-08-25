@@ -128,7 +128,7 @@ function addWord(word, gameLetters){
 function addDesc(desc){
 		
 	if(desc !== ""){
-		console.log("Here");
+		//console.log("Here");
 		firebaseObj.ref().update({answerDescription: desc});
 		
 	}
@@ -233,7 +233,7 @@ function renderHostWelcome(gameLetters, userName){
 		<p>Here are 9 random letters</p>	
 		<div id="game_letters" class="random_letters"></div>
 		<p>
-			Make a word using these letters. You can only use each letter once.
+			Make a word using any of these letters. You can only use each letter once.
 			Others will try to guess this word.
 		</p>
 		
@@ -273,6 +273,9 @@ function renderGameView(snap){
 		
 		<h1>See everyone's failures below:</h1>
 		<div id="guesses"></div>`;
+		
+		showTime();  // Shows timer.
+		checkTime(); // Changes game state once timer is finished.
 	}
 	
 	else if(isRegistered){ //What normal players will see
@@ -295,6 +298,8 @@ function renderGameView(snap){
 		
 		<h2>Everyone's incorrect guesses below:</h2>
 		<div id="guesses"></div>`;
+		
+		showTime();  // Shows timer.
 	}
 	
 	
@@ -304,8 +309,7 @@ function renderGameView(snap){
 		<h2>Wait around a bit for the next game...</h2>`;
 	}
 	
-	showTime();  // Shows timer.
-	checkTime(); // Changes game state once timer is finished.
+	
 	
 }
 
@@ -366,15 +370,12 @@ const playersDiv = document.getElementById("render_players_div");
 firebaseObj.ref("gameState").on("value", snap => { // Game SETUP: Things are being set up by the host
 	
 	if(snap.val() === null){ //Creates a game if nothing is in firebase
-		console.log(snap.val());
 
 		createGame(playerID, letters);		
 	}
 	
 	//Setting up game and players
 	else if(snap.val() === "setup"){
-		
-		console.log(snap.val());
 		
 		firebaseObj.ref("players")
 		.once("value", snap => {
@@ -386,15 +387,13 @@ firebaseObj.ref("gameState").on("value", snap => { // Game SETUP: Things are bei
 	// GAME has started
 	else if(snap.val() === "active"){ // timer countdown begins
 		
-		console.log(snap.val());
 		firebaseObj.ref().once("value")
 		.then(snap => {renderGameView(snap);});
 	}
 	
 	// GAME has finished
 	else if(snap.val() === "finished"){
-		
-		console.log(snap.val());
+
 		firebaseObj.ref().once("value")
 		.then(snap => {renderEnd(snap);});
 	}
@@ -402,7 +401,7 @@ firebaseObj.ref("gameState").on("value", snap => { // Game SETUP: Things are bei
 	// GAME has been reset
 	else if(snap.val() === "reset"){
 		location.reload();
-		console.log(snap.val());
+		//console.log(snap.val());
 	}
 	
 });
@@ -497,7 +496,7 @@ renderDiv.addEventListener("click", (e)=>{
 				let updates = {};
 				updates.winnerID = snap.child("players/" + playerID).key;
 				updates.gameState = "finished";
-				console.log(updates.winner);
+				//console.log(updates.winner);
 				firebaseObj.ref().update(updates);
 			}
 			else{ // Incorrect guesses get added to firebase
